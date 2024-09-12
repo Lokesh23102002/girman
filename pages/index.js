@@ -1,29 +1,23 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import Navbar from '../components/Navbar'; // Import the Navbar
 import SearchBar from '@/components/SearchBar';
-import SearchItem from '@/components/searched_items';
+
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState('');
+    const router = useRouter();
 
     const handleSearch = (term) => {
-        window.location.href = `/search?q=${term}`;
+        router.push(`/user/${term}`);
     };
 
     return (
         <>
-             {/* Navbar is placed here */}
-            
-            <div className=" bg-texture-gradient bg-texture flex flex-col items-center justify-between space-y-20 h-[100vh]">
-                <Navbar />
-                {/* <div className='h-[80vh]'>
-                     <SearchBar onSearch={handleSearch} /> 
-                </div> */}
-                <div className='h-[88vh]'>
-                    
-                    <SearchItem/>
+            <Navbar />
+            <div className="bg-texture-gradient bg-texture flex flex-col items-center justify-between space-y-20 h-[100vh]">
+                <div className='h-[69vh]'>
+                    <SearchBar onSearch={handleSearch} />
                 </div>
-                
-                
             </div>
         </>
     );

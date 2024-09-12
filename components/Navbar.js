@@ -11,7 +11,7 @@ export default function Navbar() {
               
                 {/* Logo */}
                 <div className=''>
-                    <a href="http://girmantech.com">
+                    <a href="/">
                         {/* Image Logo */}
                         <Image
                             src="/named_logo.svg"  // Image path from the public folder
@@ -25,7 +25,7 @@ export default function Navbar() {
                 {/* Links */}
                 <div className="sm:space-x-8 lg:space-x-10">
                     <a
-                        href="http://girmantech.com"
+                        href="/"
                         
                         className="text-custom-blue underline "
                        
@@ -33,13 +33,13 @@ export default function Navbar() {
                         SEARCH
                     </a>
                     <a
-                        href="http://girmantech.com"
+                        href="https://www.girmantech.com/"
                         className="text-black hover:text-red"
                     >
                         WEBSITE
                     </a>
                     <a
-                        href="https://linkedin.com/company/girman-technologies"
+                        href="https://www.linkedin.com/company/girmantech/"
                         className="text-black hover:text-red"
                     >
                         LINKEDIN

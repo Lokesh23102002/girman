@@ -1,14 +1,13 @@
-// components/SearchBar.js
 import React, { useState } from 'react';
 import Image from 'next/image';
 import SearchIcon from '@mui/icons-material/Search'; // Import MUI Search Icon
 
 const SearchBar = ({ onSearch }) => {
-    const [searchTerm, setSearchTerm] = useState(0);
+    const [searchTerm, setSearchTerm] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (searchTerm) {
+        if (searchTerm.trim()) {
             onSearch(searchTerm);
         }
     };
@@ -20,9 +19,9 @@ const SearchBar = ({ onSearch }) => {
                 <Image
                     src="/girman_Search.svg" // Path to your SVG file
                     alt="Search Icon"
-                    width={100} // Default width, will be controlled by custom classes
-                    height={50} // Default height, will be controlled by custom classes
-                    className="w-[70vw] h-[20vh] max-w-[800px] max-h-[600px]" // Responsive width and height
+                    width={100}
+                    height={50}
+                    className="w-[70vw] h-[20vh] max-w-[800px] max-h-[600px]"
                 />
             </div>
 
