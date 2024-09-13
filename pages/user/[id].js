@@ -1,23 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 import SearchItem from '@/components/searched_items';
 import Navbar from '@/components/Navbarsearch';
 import { useRouter } from 'next/router';
-import userList from '../../public/user_list.json';
+// import userList from '../../public/user_list.json';
 export default function Home() {
     
     const router = useRouter();
     const {id} = router.query;
-    
-    const getFilteredUsers = (term) => {
-        if (!term) return [];
-        return userList.filter(user =>
-            `${user.first_name} ${user.last_name}`.toLowerCase().includes(term.toLowerCase())
-        );
-    };
+    const [filteredUsers, setFilteredUsers] = useState([]);
 
-    const filteredUsers = getFilteredUsers(id);
+    useEffect(() => {
+        const fetchUsers = async () => {
+            if (id) {
+                try {
+                    const response = await fetch(`/api/users?searchTerm=${id}`);
+                    const data = await response.json();
+                    setFilteredUsers(data);
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            }
+        };
+
+        fetchUsers();
+    }, [id]);
+
+
+    
     return (
         <>
             {/* Navbar is placed here */}
